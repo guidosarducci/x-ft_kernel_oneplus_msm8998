@@ -302,7 +302,8 @@ static int proc_tcp_fastopen_key(struct ctl_table *table, int write,
 		for (i = 0; i < ARRAY_SIZE(user_key); i++)
 			key[i] = cpu_to_le32(user_key[i]);
 
-		tcp_fastopen_reset_cipher(net, key, TCP_FASTOPEN_KEY_LENGTH);
+		tcp_fastopen_reset_cipher(net, NULL, key,
+					  TCP_FASTOPEN_KEY_LENGTH);
 	}
 
 bad_key:
